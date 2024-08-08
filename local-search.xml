@@ -5,8 +5,8 @@
   
   <entry>
     <title>开篇</title>
-    <link href="/2024/08/08/%E5%BC%80%E7%AF%87/"/>
-    <url>/2024/08/08/%E5%BC%80%E7%AF%87/</url>
+    <link href="/%E5%BC%80%E7%AF%87/"/>
+    <url>/%E5%BC%80%E7%AF%87/</url>
     
     <content type="html"><![CDATA[<h1 id="第一篇博客"><a href="#第一篇博客" class="headerlink" title="第一篇博客"></a>第一篇博客</h1><h2 id="简单的开始"><a href="#简单的开始" class="headerlink" title="简单的开始"></a>简单的开始</h2><p>​博客是写给自己看的，文笔上没太多讲究。先使用Hexo和Github搭建（免费），有更多需求后再考虑部署到云服务上。</p><p>​三年计算机专业学习，两年的RoboMaster经历，积累了不少笔记，都零零散散“堆积”在我的文件夹里。正处于应届秋招开始的档口，整理技术文档是非常有必要的。所以，技术博客的推送时间并不代表写文章的时间，主要按照主题、标题和Tag来整理成专题。</p><p>目前计划要写的方向：</p><ol><li>学习笔记记录，主要是计算机核心课程</li><li>项目开发过程记录，例如 MIT6.S081、RPC、CMU15-445、南大ICS的PA</li><li>开源项目的源码分析，例如 Transformer、PyTorch、YOLO</li><li>偶尔会整理有趣的算法题解析</li><li>RoboMaster的内容会整理到战队博客上</li><li>其他——经验、方法及感想</li></ol>]]></content>
     
