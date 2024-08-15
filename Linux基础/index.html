@@ -1,0 +1,708 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="郭刘吉">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Linux基础 Linux的历史发展可以自行了解。 UNIX系统发展可以阅读《UNIX传奇》  逛B站，偶然翻到清华科协暑培的Linux课程，非常适合作为入门上手的资料，文档链接如下： Linux &amp; Shell | EESΛST Docs (eesast.com)  本篇不是将文档复述一遍，而是在此基础上的强调和补充。  用户管理 输入whoami，查看当前身份 cat &#x2F;etc&#x2F;pas">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux基础">
+<meta property="og:url" content="https://ryan-wwj.github.io/Linux%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="郭刘吉的小站">
+<meta property="og:description" content="Linux基础 Linux的历史发展可以自行了解。 UNIX系统发展可以阅读《UNIX传奇》  逛B站，偶然翻到清华科协暑培的Linux课程，非常适合作为入门上手的资料，文档链接如下： Linux &amp; Shell | EESΛST Docs (eesast.com)  本篇不是将文档复述一遍，而是在此基础上的强调和补充。  用户管理 输入whoami，查看当前身份 cat &#x2F;etc&#x2F;pas">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-08-15T03:03:55.000Z">
+<meta property="article:modified_time" content="2024-08-15T03:08:09.744Z">
+<meta property="article:author" content="郭刘吉">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Linux基础 - 郭刘吉的小站</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"ryan-wwj.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>郭刘吉的小站</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Linux基础"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-08-15 11:03" pubdate>
+          2024年8月15日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          15 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Linux基础</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Linux基础"><a href="#Linux基础" class="headerlink" title="Linux基础"></a>Linux基础</h1><blockquote>
+<p>Linux的历史发展可以自行了解。</p>
+<p>UNIX系统发展可以阅读《UNIX传奇》</p>
+</blockquote>
+<p>逛B站，偶然翻到清华科协暑培的Linux课程，非常适合作为入门上手的资料，文档链接如下：</p>
+<p><a target="_blank" rel="noopener" href="https://docs.eesast.com/docs/tools/linux&shell">Linux &amp; Shell | EESΛST Docs (eesast.com)</a></p>
+<blockquote>
+<p>本篇不是将文档复述一遍，而是在此基础上的强调和补充。</p>
+</blockquote>
+<h2 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h2><ol>
+<li>输入<code>whoami</code>，查看当前身份</li>
+<li><code>cat /etc/passwd</code>，查看全部用户属性</li>
+<li><code>cat /etc/group</code>，查看用户组</li>
+<li><code>sudo usermod -aG [groupname] [username]</code>，添加指定用户到指定组</li>
+<li><code>newgrp [groupname]</code>切换用户组</li>
+<li>查看文件，除了<code>ls</code>，还有<code>ll</code>相当于<code>ls -al</code>；了解文件权限意思</li>
+<li>修改权限，<code>chmod</code>，读r权重为4，写w权重为2，执行x权重为1</li>
+<li>通过 chown 命令来修改文件的属主和属组，需要使用超级用户权限修改</li>
+</ol>
+<h2 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h2><p>Linux的设计哲学是一切皆文件，其文件结构呈树状。</p>
+<ol>
+<li>&#x2F;boot是内核文件，包括镜像文件和连接文件</li>
+<li>&#x2F;etc存放所有的系统需要的配置文件和子目录列表</li>
+<li>&#x2F;lib存放共享库</li>
+<li>**&#x2F;bin 存放常用程序和指令</li>
+<li>**&#x2F;sbin 只有系统管理员能使用的程序和指令</li>
+<li>外部设备，&#x2F;dev 外部设备，&#x2F;media 类win的其他设备，&#x2F;mnt临时挂载别的文件系统</li>
+<li>临时文件，&#x2F;run、&#x2F;tmp</li>
+<li>账户文件，常见的有root和home，&#x2F;usr是存放应用程序和文件的目录，类似Windows的program files</li>
+</ol>
+<p>磁盘管理，在win上可以使用文件资源管理和磁盘管理实现分区管理。在Linux上：</p>
+<ol>
+<li><code>df -h /home</code>，查看分区磁盘使用情况</li>
+<li><code>du -h demo</code>，查看demo文件的存储占用情况</li>
+<li>fdisk用于操作磁盘分区表</li>
+<li>mkfs用于格式化指定磁盘</li>
+<li>将某个文件系统挂载到目录下，使用mount，取消挂载使用unmount</li>
+</ol>
+<h2 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a>Shell</h2><h3 id="Shell命令"><a href="#Shell命令" class="headerlink" title="Shell命令"></a>Shell命令</h3><p>前文已经涉及到Shell命令，命令中涉及的参数如果记不住可以使用man命令</p>
+<p><code>man [command name]</code>，除此之外，还有实用的命令：</p>
+<ol>
+<li><code>tree demo</code>，展示demo目录的文件结构</li>
+<li>find用于查找文件，whereis可以查找二进制文件、源代码、man手册</li>
+<li>创建目录，<code>mkdir</code>，创建文件<code>touch</code></li>
+<li>复制和移动文件或目录，<code>cp</code>、<code>mv</code></li>
+</ol>
+<p>系统管理命令：CPU、内存管理情况</p>
+<ol>
+<li><code>top</code>，查看内存情况</li>
+<li><code>ps aux</code>，查看进程，aux分别是三个选项；kill可以终止进程，但无法终止系统和守护进程</li>
+<li><code>apt</code>，包管理工具。update列出所有可升级的软件，upgrade升级所有软件包，remove删除软件包，autoremove清理不再使用的依赖库，search查找包；除了apt，还有<code>snap</code>软件管理</li>
+<li><code>cat</code>打印文件内容；<code>grep</code>查找与给定正则表达式匹配的内容</li>
+</ol>
+<p>vim编辑器，了解常用的指令，也可以通过配置插件作为开发工具。</p>
+<p>输入输出重定向，<code>&gt;</code>和<code>&gt;&gt;</code></p>
+<ol>
+<li>命令 &gt; 文件，将命令结果重定向输出到指定文件，会覆盖</li>
+<li>命令 2&gt; 文件，将命令执行的错误重定向输出到指定文件，会覆盖</li>
+<li><code>&gt;&gt;</code>，不会覆盖文件已有数据</li>
+</ol>
+<p>管道pipe<code>|</code>，将一个命令作为下一个命令的输入，例如<code>ls | grep demo</code>用于搜索文件名包含demo的文件，ls的输出作为grep的输入。</p>
+<h3 id="Shell脚本"><a href="#Shell脚本" class="headerlink" title="Shell脚本"></a>Shell脚本</h3><p>Shell脚本是在Shell中运行的程序，用于完成一些自动化任务和。</p>
+<ol>
+<li><p>注释</p>
+</li>
+<li><p>变量，<code>a=1</code>，注意不要空格，查看变量<code>echo $a</code>；删除变量<code>unset a</code></p>
+</li>
+<li><p>数组，<code>array=(1 2 3)</code>，注意不需要空格和逗号分隔；<code>echo $&#123;array[@]&#125;</code>，@表示数组中所有元素</p>
+</li>
+<li><p>分支&amp;循环</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">分支</span><br>if condition1<br>then<br>	command1<br>elif condition2<br>then<br>	command2<br>else<br>	command3<br>fi<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">循环</span><br>for file in file1.txt file2.txt file3.txt<br>do<br>    cat &quot;$file&quot;<br>done<br><br>a=0<br>while [ $a -le 10 ]<br>do<br>	command # 注意内部使用变量要加$符号<br>done<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>函数，<code>function test()&#123; command; return $result &#125;</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell">function test()&#123;<br>    echo &quot;参数1： $&#123;1&#125; !&quot;;             # 通过$&#123;n&#125;来获取传入函数的第n个参数<br>    echo &quot;参数10： $&#123;10&#125; !&quot;;    		# 双引号括起来的字符串中可以引用变量<br>    n=$(($&#123;1&#125;+$&#123;10&#125;));<br>    return $n;   					  # 如果不加return，则返回值为最后一条命令的结果<br>&#125;<br><br>test 1 2 3 4 5 6 7 8 9 10;            # 调用函数时依序传递参数<br>echo $?;                              # 可以通过变量$?来获取函数的返回值或者上一条命令的结果<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>运行方式，<code>./demo.sh</code>和<code>bash demo.sh</code></p>
+</li>
+</ol>
+<h3 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h3><p>环境变量是存放Shell工作环境的数据，以便访问。</p>
+<p>查看环境变量，全局<code>env</code>，HOME变量<code>echo $HOME</code></p>
+<p>设置环境变量，分临时和永久设置：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">临时设置</span><br>variable=&quot;test&quot;<br>export variable		# 导出环境变量<br>unset variable		# 删除环境变量<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">如想设置持久的环境变量，就需要修改系统启动时用于加载环境变量的文件</span><br>/etc/profile		# 系统级，登录shell当中加载<br>/etc/bashrc			# 系统级，可认为都会被加载<br>~/.profile			# 用户级，登录shell当中加载<br>~/.bashrc			# 用户级，可认为都会被加载<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">修改 PATH 环境变量时，一般采用追加导出的方式，即在文件的最后一行加上</span><br>export PATH=/usr/local/src/mongodb/bin:$PATH<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">环境变量立即生效，可以使用<span class="hljs-built_in">source</span></span><br>source [file name]<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h2><p>全称是Secure Shell，安全外壳协议。为远程登录会话提供安全协议：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">ssh user@hostname  # 主机名可以是IP地址或者域名<br>ssh -p [port] user@hostname   # SSH默认连接到目标主机的22端口，可以通过-p指定其他端口<br></code></pre></td></tr></table></figure>
+
+<h3 id="tmux"><a href="#tmux" class="headerlink" title="tmux"></a>tmux</h3><p>当远程断开后，服务器正运行的会话终止。 tmux 是用来解绑会话与打开的终端窗口的，可以让你启动的进程在断开连接之后继续运行。</p>
+<ol>
+<li><code>tmux new -s &lt;session name&gt;</code>，新建tmux会话</li>
+<li>在 tmux 窗口中，按下<code>Ctrl+b</code>，然后按<code>d</code>，d是detach的意思。返回原先Shell但tmux窗口仍在后台运行；可以用<code>tmux attach -t &lt;session name&gt;</code>接回。</li>
+<li><code>tmux kill-session -t &lt;session name&gt;</code>，关闭会话</li>
+</ol>
+<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><p>最后附上两题的答案，</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">第一题，求 100 以内的奇数和。结果打印到标准输出设备。</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">!/bin/bash</span><br>sum=0<br>for i in &#123;1..100..2&#125;<br>do<br>  let sum=$((sum + i))<br>done<br>echo &quot;The sum of odd numbers from 1 to 99 is: $sum&quot;<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">第二题，在家目录下新建 data 目录并向其中新建 100 个名为 test1.txt,…,test100.txt 的文件。之后查找到 data 目录下所有文件名包含“5”的文件，并向其中分别写入文件名中的数字这么多行的“abcd”。</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">!/bin/bash</span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">新建 data 目录</span><br>mkdir -p ~/data<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">循环创建 100 个文件</span><br>for i in &#123;1..100&#125;<br>do<br>    touch ~/data/test$i.txt<br>done<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">循环查找所有文件名包含<span class="hljs-string">&quot;5&quot;</span>的文件，并写入相应数量的<span class="hljs-string">&quot;abcd&quot;</span></span><br>for file in ~/data/test[5-9]*.txt<br>do<br>    # 使用文件名中的数字作为循环次数<br>    num=$(basename &quot;$file&quot; | grep -o &#x27;[0-9]\+&#x27;)<br>    for (( j=1; j&lt;=num; j++ ))<br>    do<br>        echo &quot;abcd&quot; &gt;&gt; &quot;$file&quot;<br>    done<br>done<br><br>echo &quot;操作完成。&quot;<br></code></pre></td></tr></table></figure>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Linux基础</div>
+      <div>https://ryan-wwj.github.io/Linux基础/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>郭刘吉</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年8月15日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E5%BC%80%E7%AF%87/" title="开篇">
+                        <span class="hidden-mobile">开篇</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
