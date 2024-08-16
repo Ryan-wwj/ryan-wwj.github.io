@@ -19,21 +19,21 @@
   <meta name="author" content="郭刘吉">
   <meta name="keywords" content="">
   
-    <meta name="description" content="测试理论基础（一） 5月份中部区域赛结束，还是个测试小白，测不了一点。 这系列是综合各种技术文档和公众号总结出来的，目的就是搭建测试理论体系。 学完理论基础再去牛客刷题（专项练习-测试）。  先导测试是什么？ 软件开发中难免会有Bug，测试的作用就是及时找到程序存在的Bug和缺陷。  测试软件是否满足的用户提出的需求。这种情况下，我们应当对需求文档中的每一个需求都要编写测试样例进行测试，观察在合法">
+    <meta name="description" content="计网-初步 看到一个通俗易懂的B站科普教程，up主是free-coder 本篇就总结这一视频作为计网学习的第一步  物理层两台主机要通信，最直接的办法就是连接一根能够传输电信号的线。 按照这条件，多台主机就是多条线，每台之间都要通信就要全连接。 哪来那么多线啊？得想办法降低成本。 所以就有了集线器（Hub），逻辑上就记住两点，一个是标识，一个是转发。 集线器可以视为带标识的广播。但依旧存在两个问题">
 <meta property="og:type" content="article">
-<meta property="og:title" content="测试理论基础（一）">
-<meta property="og:url" content="https://ryan-wwj.github.io/%E6%B5%8B%E8%AF%95%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%80%EF%BC%89/index.html">
+<meta property="og:title" content="计网-初步">
+<meta property="og:url" content="https://ryan-wwj.github.io/%E8%AE%A1%E7%BD%91-%E5%88%9D%E6%AD%A5/index.html">
 <meta property="og:site_name" content="郭刘吉的小站">
-<meta property="og:description" content="测试理论基础（一） 5月份中部区域赛结束，还是个测试小白，测不了一点。 这系列是综合各种技术文档和公众号总结出来的，目的就是搭建测试理论体系。 学完理论基础再去牛客刷题（专项练习-测试）。  先导测试是什么？ 软件开发中难免会有Bug，测试的作用就是及时找到程序存在的Bug和缺陷。  测试软件是否满足的用户提出的需求。这种情况下，我们应当对需求文档中的每一个需求都要编写测试样例进行测试，观察在合法">
+<meta property="og:description" content="计网-初步 看到一个通俗易懂的B站科普教程，up主是free-coder 本篇就总结这一视频作为计网学习的第一步  物理层两台主机要通信，最直接的办法就是连接一根能够传输电信号的线。 按照这条件，多台主机就是多条线，每台之间都要通信就要全连接。 哪来那么多线啊？得想办法降低成本。 所以就有了集线器（Hub），逻辑上就记住两点，一个是标识，一个是转发。 集线器可以视为带标识的广播。但依旧存在两个问题">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-08-16T02:48:53.000Z">
-<meta property="article:modified_time" content="2024-08-16T03:06:22.465Z">
+<meta property="article:published_time" content="2024-08-16T14:00:30.000Z">
+<meta property="article:modified_time" content="2024-08-16T14:00:55.434Z">
 <meta property="article:author" content="郭刘吉">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>测试理论基础（一） - 郭刘吉的小站</title>
+  <title>计网-初步 - 郭刘吉的小站</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="测试理论基础（一）"></span>
+            <span id="subtitle" data-typed-text="计网-初步"></span>
           
         </div>
 
@@ -210,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-08-16 10:48" pubdate>
-          2024年8月16日 上午
+        <time datetime="2024-08-16 22:00" pubdate>
+          2024年8月16日 晚上
         </time>
       </span>
     
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.1k 字
+          888 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          18 分钟
+          8 分钟
         
       </span>
     
@@ -270,153 +270,51 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">测试理论基础（一）</h1>
+            <h1 id="seo-header">计网-初步</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="测试理论基础（一）"><a href="#测试理论基础（一）" class="headerlink" title="测试理论基础（一）"></a>测试理论基础（一）</h1><blockquote>
-<p>5月份中部区域赛结束，还是个测试小白，测不了一点。</p>
-<p>这系列是综合各种技术文档和公众号总结出来的，目的就是搭建测试理论体系。</p>
-<p>学完理论基础再去牛客刷题（专项练习-测试）。</p>
+                <h1 id="计网-初步"><a href="#计网-初步" class="headerlink" title="计网-初步"></a>计网-初步</h1><blockquote>
+<p>看到一个通俗易懂的B站科普教程，up主是free-coder</p>
+<p>本篇就总结这一视频作为计网学习的第一步</p>
 </blockquote>
-<h2 id="先导"><a href="#先导" class="headerlink" title="先导"></a>先导</h2><p>测试是什么？</p>
-<p>软件开发中难免会有Bug，测试的作用就是及时找到程序存在的Bug和缺陷。</p>
+<h2 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h2><p>两台主机要通信，最直接的办法就是连接一根能够传输电信号的线。</p>
+<p>按照这条件，多台主机就是多条线，每台之间都要通信就要全连接。</p>
+<p>哪来那么多线啊？得想办法降低成本。</p>
+<p>所以就有了集线器（Hub），逻辑上就记住两点，一个是<strong>标识</strong>，一个是<strong>转发</strong>。</p>
+<p>集线器可以视为带标识的广播。但依旧存在两个问题：</p>
 <ol>
-<li><strong>测试软件是否满足的用户提出的需求</strong>。这种情况下，我们应当对<strong>需求文档中的每一个需求都要编写测试样例进行测试</strong>，观察在合法输入下我们的软件是否能给出期望的输出。</li>
-<li>测试软件<strong>是否存在缺陷</strong>，找出可能导致软件行为异常甚至崩溃的输入序列，避免这种情况的发生。</li>
+<li>既然是广播，怎么判断信号要发给谁？标识</li>
+<li>传输通道上同时出现多个信号，怎么解决？CSMA&#x2F;CD协议</li>
 </ol>
-<p>总结就是<strong>测需求、测缺陷</strong>。测需求就是选用合法输入以验证是否给出正确输出，测缺陷就是通过非法输入验证程序鲁棒性。两者都可以测出软件存在的缺陷和Bug。需要注意，即使通过了测试，程序也可能存在Bug。</p>
-<p>软件测试分为开发测试、发布测试、用户测试。主要关注开发测试，在开发过程中发现Bug和缺陷，开发测试分为：</p>
-<ol>
-<li>单元测试，对程序的<strong>各个单元</strong>进行测试。程序的<strong>单元可能是函数、方法、类对象</strong>，等等；</li>
-<li>构件测试，对多个不同的单元、构件进行集成以<strong>创建一个复合构件</strong>，专注于不同构件的接口之间的关系； </li>
-<li>系统测试：整个系统进行测试</li>
-</ol>
-<h2 id="大纲"><a href="#大纲" class="headerlink" title="大纲"></a>大纲</h2><p>测试理论大概有什么？</p>
-<ol>
-<li>测试流程：瀑布模型，双v模型，螺旋模型等</li>
-<li>测试手段：黑盒测试，灰盒测试，白盒测试，静态测试，动态测试</li>
-<li>测试阶段：测试过程中对应的阶段</li>
-<li>测试成果</li>
-<li>测试点方法：功能、非功能（iso9126）、接口（软、硬、用户接口）</li>
-<li>黑盒测试用例设计</li>
-<li>白盒测试用例设计</li>
-<li>灰盒用例设计</li>
-<li>质量铁三角</li>
-<li>cmm5级质量图</li>
-<li>用例标准属性</li>
-<li>Bug等级</li>
-<li>iso9126</li>
-</ol>
-<h2 id="输入处理和输出"><a href="#输入处理和输出" class="headerlink" title="输入处理和输出"></a>输入处理和输出</h2><h3 id="更新一个观点"><a href="#更新一个观点" class="headerlink" title="更新一个观点"></a>更新一个观点</h3><p>弄清楚一个问题：测试理论和流程不是线性的，而是网状结构。</p>
-<p>测试阶段分为：单元测试-集成测试-系统测试。这句理论和<strong>功非接不是一条线串联</strong>的，而是融合的。例如，集成测试包含功能和非功能的测试点，功能又包含单元-集成-系统测试。</p>
-<p>乍一看很复杂，但目前只需要知道，</p>
-<p><strong>功能 &#x3D; 多个阶段 ✖️（输入+处理+输出）</strong></p>
-<h3 id="输入-处理-输出"><a href="#输入-处理-输出" class="headerlink" title="输入-处理-输出"></a>输入-处理-输出</h3><p>任何功能的实现的三个过程。这三个过程，都要进行测试。</p>
-<p>以<strong>登录功能</strong>为例，可以分：</p>
-<ol>
-<li>输入：登录名、密码、验证码</li>
-<li>处理：服务器、中间件等</li>
-<li>输出：成功则页面跳转，失败则出现提示</li>
-</ol>
-<p>以上的测试内容还不全面，三个过程还可以细分为<strong>可见&#x2F;不可见</strong>。</p>
-<ol>
-<li>输入<br>无论是可见还是不可见，要通过测试确保，这些参数字段成功的生成了请求体，组成了正确的接口请求。<ol>
-<li>可见：输入的用户名，密码，验证码，是否勾选协议，登录按钮等</li>
-<li>不可见：登录日期、IP、安全环境检测、物理设备号、缓存等</li>
-</ol>
-</li>
-<li>处理<ol>
-<li>可见：代码、函数等，可用白盒测试</li>
-<li>不可见：外链引用、库、第三方服务等</li>
-</ol>
-</li>
-<li>输出<ol>
-<li>可见：前文的界面反馈</li>
-<li>不可见：接口返回参数-错误码、缓存、客户端的本地配置等</li>
-</ol>
-</li>
-</ol>
-<h2 id="非功能"><a href="#非功能" class="headerlink" title="非功能"></a>非功能</h2><p>非功能有六大特性。。。</p>
-<h3 id="功能性测试"><a href="#功能性测试" class="headerlink" title="功能性测试"></a>功能性测试</h3><blockquote>
-<p>思考：非功能的功能性和功能测试有什么区别？</p>
+<p>CSMA&#x2F;CD协议，监听线路状态，空闲发送否则等待。</p>
+<hr>
+<p>使用集线器的缺点：功能简单、带宽利用率低、终端越多冲突可能性就增加</p>
+<h2 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h2><p>弥补集线器的缺陷，引入交换机。</p>
+<p>交换机有一张表用于记录地址，记录MAC地址和端口。</p>
+<p>MAC地址又称为<strong>物理地址</strong>，有48bit，分6个字段，每个字段8位。</p>
+<p>交换机是全双工（同时收发），使用网线连接。</p>
+<p>交换机的表原先是空表，通过广播找到对应的端口映射关系。</p>
+<p>交换机可以进行桥接，也就是多台交换机可以连接在一起，所以另一台交换机上的设备在当前交换机的映射都是对应同一端口。</p>
+<hr>
+<p>交换机表的存储量还是太少，不能够支撑器全球范围的设备通信，只适用于局域网。</p>
+<p>另一个缺陷是如果设备过多则寻址时间会非常长。</p>
+<h2 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h2><p>跨局域网的互通，也就是互联网。</p>
+<p>网络和网络的连接，需要使用<strong>路由器，又称为网关</strong>，处于两个网络之间的连接点。</p>
+<p>如何表示跨局域网络的标识？IP地址。</p>
+<p>IP是一个抽象地址，用来<strong>标识网络和设备</strong>。</p>
+<p>每一个设备都有自己的路由表。而路由器的路由表就有两个网络的IP。</p>
+<p>路由表的建立比前文提到的MAC地址映射要复杂多，其算法仍在更新。</p>
+<p>网络内传输数据依旧是通过MAC地址，不是直接使用IP地址，<strong>IP不能直接用作通信</strong>，由此可知，MAC地址才是真实的地址。所以本地查找另一个设备的IP使用<strong>ARP协议</strong>，<strong>使用广播寻找IP对应的物理地址</strong>。找到后就在MAC层（数据链路层）进行传输。</p>
+<p>跨网络与另一网络的设备通信。还是先在网络内找到路由器IP对应的MAC地址，以此类推。在寻址时，IP一般不会切换，主要通过ARP协议寻找MAC地址，NAT特殊（IP也会切换）。</p>
+<h2 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h2><p>针对前面三个层搭建了简单的认知后，再往上就是传输层、应用层，就是TCP、UDP、HTTP之类的。</p>
+<p>最后提几个问题，抛砖引玉，接下来就是通过系统学习回答一下问题。</p>
+<blockquote>
+<p>路由器上的WAN口、LAN口分别是什么？有几个实体网卡，一个网口对应一个网卡吗？</p>
+<p>路由器有多少个IP？</p>
+<p>电脑、手机连接路由时并没有设置IP，那么IP是怎么获得的？</p>
 </blockquote>
-<p>非功能的功能性的五个特性：</p>
-<ol>
-<li>适合性，侧重于用户需求的适合性，提供了需要的功能，提供的功能是用户需要的</li>
-<li>准确性，提供给用户功能的准确度（其实还是和需求挂钩）</li>
-<li>互操作性，软件和其他系统交互的能力，例如PC中打印机和word的接口调用</li>
-<li>保密安全性，权限、隐私</li>
-<li>依从性，顺应法律和用户使用习惯（各种标准）</li>
-</ol>
-<h3 id="可靠性测试"><a href="#可靠性测试" class="headerlink" title="可靠性测试"></a>可靠性测试</h3><ol>
-<li>成熟性，避免软件Bug导致系统失效的能力，例如，Bug导致用户信息丢失。</li>
-<li>容错性，避免外部接口错误扩散导致系统失效，例如，打印机中途断电不会导致word运行</li>
-<li>易恢复性，故障后可以恢复原有功能和性能</li>
-<li>依从性，保证可靠性的业内规则，例如安全备份</li>
-</ol>
-<h3 id="易用性"><a href="#易用性" class="headerlink" title="易用性"></a>易用性</h3><ol>
-<li>易理解性，给用户的信息要清晰易懂，反例就是看不懂怎么用</li>
-<li>易学性，用户可以学习应用的能力，用户手册的语言中英文、是否齐全、是否有在线人工服务</li>
-<li>易操作性，易操作和控制上的能力，安装步骤是否简单</li>
-<li>吸引性，吸引用户的能力、界面外观</li>
-<li>依从性，遵循设计标准</li>
-</ol>
-<h3 id="效率性"><a href="#效率性" class="headerlink" title="效率性"></a>效率性</h3><p>和性能测试，压力测试，负载测试有重合的地方。或者说压力测试属于效率性的一部分。</p>
-<ol>
-<li>时间特性，也就是<strong>性能测试</strong>，业务请求所需要的响应时间。不单是接口压测，还要全面分层衡量，如客户端渲染的速度，缓存文件读写的速度，接口请求的速度，数据库读写的速度等等。</li>
-<li>资源利用性，业务请求所消耗的系统资源。内存、硬盘、流量、电能</li>
-<li>依从性，不能比同行差太多吧</li>
-</ol>
-<h3 id="可移植性"><a href="#可移植性" class="headerlink" title="可移植性"></a>可移植性</h3><ol>
-<li>适应性，无需变动就能适应环境的能力</li>
-<li>易安装性，尽可能少的提供选择，方便用户直接安装</li>
-<li>共存性，在公共环境中与其它软件分享公共资源共存的软件，不冲突</li>
-<li>易替换性，做好兼容适配，例如早期鸿蒙兼容安卓</li>
-<li>依从性，依据规范、法律做可移植</li>
-</ol>
-<h3 id="可维护性"><a href="#可维护性" class="headerlink" title="可维护性"></a>可维护性</h3><p>与shi山的斗争。</p>
-<ol>
-<li>易分析性，提供辅助手段帮助开发人员定位缺陷产生的原因，判断出修改的地方</li>
-<li>易改变性，高内聚低耦合</li>
-<li>易测试性，日志输出，方便测试</li>
-<li>依从性，开发代码符合规范，变量名、注释文档</li>
-</ol>
-<h2 id="软件缺陷"><a href="#软件缺陷" class="headerlink" title="软件缺陷"></a>软件缺陷</h2><blockquote>
-<p>什么是Bug？怎么跟踪？怎么Bug分级？</p>
-</blockquote>
-<h3 id="Bug属性"><a href="#Bug属性" class="headerlink" title="Bug属性"></a>Bug属性</h3><p>提交Bug会使用一些Bug管理工具，但什么标准，以下是Bug标准属性：</p>
-<p>需求id，用例id，bug编号，bug标题，bug描述，预期输出，实际输出，复现步骤，附件图片，备注，提交人，责任人 等</p>
-<h3 id="Bug分级"><a href="#Bug分级" class="headerlink" title="Bug分级"></a>Bug分级</h3><p>致命——严重——一般——轻微——优化</p>
-<ol>
-<li>致命，引起系统服务崩溃，用户关键数据丢失，巨大资产损失，生命安全风险</li>
-<li>严重，引起软件主要功能失效</li>
-<li>一般，主要功能失准，次要功能失效</li>
-<li>轻微，次要功能失准</li>
-<li>优化，影响用户体验，文案错别字等</li>
-</ol>
-<h3 id="Bug生命周期"><a href="#Bug生命周期" class="headerlink" title="Bug生命周期"></a>Bug生命周期</h3><p>这个过程中有几个重要角色：</p>
-<ol>
-<li>测试工程师，提交Bug、验证修改后的Bug</li>
-<li>测试经理，判断是否是Bug，确定Bug是否重复</li>
-<li>开发经理，是否延期修复</li>
-<li>CCB，变更控制委员会，开发拒绝修复则提交CCB（类似仲裁）</li>
-<li>开发工程师，改bug</li>
-</ol>
-<h2 id="验收测试"><a href="#验收测试" class="headerlink" title="验收测试"></a>验收测试</h2><blockquote>
-<p>如果面试中提到测试流程，双v模型最终阶段-验收测试，面试官一问验收测试流程是什么？</p>
-<p>可能就懵了。</p>
-<p>为了避免成为书呆子，就有必要知道每个概念后的含义。</p>
-</blockquote>
-<ol>
-<li>验收测试项目洽谈，签好合同。（测试一般不参与的）</li>
-<li>提交测试样品，改到满意为止</li>
-<li>编写测试计划并通过评审（需要测试参与沟通）</li>
-<li>简单培训，进行测试设计，编制测试方案</li>
-<li>方案通过后，开始测试，编写测试报告</li>
-</ol>
-<p>这个环节着实是没太多营养。。。</p>
 
                 
               </div>
@@ -434,8 +332,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>测试理论基础（一）</div>
-      <div>https://ryan-wwj.github.io/测试理论基础（一）/</div>
+      <div>计网-初步</div>
+      <div>https://ryan-wwj.github.io/计网-初步/</div>
     </div>
     <div class="license-meta">
       
@@ -479,18 +377,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/%E8%AE%A1%E7%BD%91-%E5%88%9D%E6%AD%A5/" title="计网-初步">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">计网-初步</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/Linux%E5%9F%BA%E7%A1%80/" title="Linux基础">
-                        <span class="hidden-mobile">Linux基础</span>
+                      <a href="/%E6%B5%8B%E8%AF%95%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%80%EF%BC%89/" title="测试理论基础（一）">
+                        <span class="hidden-mobile">测试理论基础（一）</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
