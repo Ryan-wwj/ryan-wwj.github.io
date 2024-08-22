@@ -27,7 +27,7 @@
 <meta property="og:description" content="计网-体系（二） 越学越自信是怎么回事？ 别想，狂做。 不是从头开始学茴的几种写法，而是搭个雏形框架，然后精雕细琢，逐步深化认识。  从输入网址到页面显示，期间发生了什么这是一道面试题。接下来就通过这个问题构建网络拓扑模型。 HTTP浏览器第一步是解析URL，也就是读懂URL。 URL是统一资源定位符，分为三部分，访问数据协议、Web服务器、数据源路径名。 使用HTTP协议发起请求，请求报文包括请">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-08-22T15:53:16.000Z">
-<meta property="article:modified_time" content="2024-08-22T15:53:37.337Z">
+<meta property="article:modified_time" content="2024-08-22T15:56:42.688Z">
 <meta property="article:author" content="郭刘吉">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -371,8 +371,7 @@
 <h3 id="Linux网络协议栈"><a href="#Linux网络协议栈" class="headerlink" title="Linux网络协议栈"></a>Linux网络协议栈</h3><p>TCP&#x2F;IP模型中每个层对应的在数据前增加什么头部要清楚。</p>
 <p>以太网规定的最大传输单元MTU，在1500字节，大于MTU就需要分块传输，MTU除了数据还包括IP和TCP头。MTU越小，分包越多，网络吞吐能力越差；相反，MTU越大，需要分包数量就越少，吞吐能力就越强。</p>
 <p>Linux协议栈就以TCP&#x2F;IP模型为基础。</p>
-<h3 id="Linux接受网络包的流程"><a href="#Linux接受网络包的流程" class="headerlink" title="Linux接受网络包的流程"></a>Linux接受网络包的流程</h3><p>网卡——DMA——硬件中断——</p>
-<p>当网卡接收到一个网络包后，会通过 DMA 技术，将网络包写入到指定的内存地址（ring buffer，环形缓冲区），然后通知操作系统网络包已到达。</p>
+<h3 id="Linux接受网络包的流程"><a href="#Linux接受网络包的流程" class="headerlink" title="Linux接受网络包的流程"></a>Linux接受网络包的流程</h3><p>当网卡接收到一个网络包后，会通过 DMA 技术，将网络包写入到指定的内存地址（ring buffer，环形缓冲区），然后通知操作系统网络包已到达。</p>
 <p>如何通知操作系统？通常使用<strong>触发中断</strong>，但在高性能网络环境下，频繁中断会影响CPU整体效率。所以采用一种中断和轮询的方式，称为<strong>NAPI机制</strong>，它不采用中断方式读取数据，而是首先采用中断唤醒数据接收的服务程序，然后 <code>poll</code> 的方法来轮询数据。</p>
 <p>数据包送到后会通过 DMA 技术，将网络包写入到指定的内存地址。接着网卡向 CPU 发起硬件中断，当 CPU 收到硬件中断请求后，根据<strong>中断表</strong>，调用已经注册的<strong>中断处理函数</strong>。</p>
 <p>中断处理函数解决以下 事情：第一，暂时屏蔽中断，表示已经知道内存已经有数据，下次传输直接写入内存就可以，不需要通知CPU触发中断；第二，发起软中断，然后恢复刚才屏蔽的中断。</p>
