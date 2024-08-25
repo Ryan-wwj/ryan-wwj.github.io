@@ -1,0 +1,887 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="郭刘吉">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="测试理论基础（三） 决定在这篇完成测试理论基础的学习，所以会写长点。  之前提到“β测试更倾向于压测和全链路测试”，这里说下压测和全链路测试，这两者都是为了验证软件的稳定性和可靠性，压测目的是确定系统或软件崩溃的极限，全链路测试目标在于验证整个软件系统的端到端流程。  测试团队的核心在于组织、流程、技术（质量铁三角）。测试团队也分等级（CMM5级图），如下是对应等级的特点：  初始级，产品质量不可">
+<meta property="og:type" content="article">
+<meta property="og:title" content="测试理论基础（三）">
+<meta property="og:url" content="https://ryan-wwj.github.io/%E6%B5%8B%E8%AF%95%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%89%EF%BC%89/index.html">
+<meta property="og:site_name" content="郭刘吉的小站">
+<meta property="og:description" content="测试理论基础（三） 决定在这篇完成测试理论基础的学习，所以会写长点。  之前提到“β测试更倾向于压测和全链路测试”，这里说下压测和全链路测试，这两者都是为了验证软件的稳定性和可靠性，压测目的是确定系统或软件崩溃的极限，全链路测试目标在于验证整个软件系统的端到端流程。  测试团队的核心在于组织、流程、技术（质量铁三角）。测试团队也分等级（CMM5级图），如下是对应等级的特点：  初始级，产品质量不可">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-08-25T07:57:26.000Z">
+<meta property="article:modified_time" content="2024-08-25T07:57:48.953Z">
+<meta property="article:author" content="郭刘吉">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>测试理论基础（三） - 郭刘吉的小站</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"ryan-wwj.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>郭刘吉的小站</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="测试理论基础（三）"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-08-25 15:57" pubdate>
+          2024年8月25日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          43 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">测试理论基础（三）</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="测试理论基础（三）"><a href="#测试理论基础（三）" class="headerlink" title="测试理论基础（三）"></a>测试理论基础（三）</h1><blockquote>
+<p>决定在这篇完成测试理论基础的学习，所以会写长点。</p>
+</blockquote>
+<p>之前提到“β测试更倾向于压测和全链路测试”，这里说下压测和全链路测试，这两者都是为了验证软件的稳定性和可靠性，压测目的是确定系统或软件崩溃的极限，全链路测试目标在于验证整个软件系统的端到端流程。</p>
+<hr>
+<p>测试团队的核心在于组织、流程、技术（质量铁三角）。测试团队也分等级（CMM5级图），如下是对应等级的特点：</p>
+<ol>
+<li>初始级，<strong>产品质量不可预测</strong>，测试排期每次都排不准，线上经常出问题，测试流程混乱，缺乏控制；</li>
+<li>可重复级，之前的宝贵经验<strong>可重复使用</strong>，整个风险控制得到改善；</li>
+<li>已定义级，测试过程可以被描述的很<strong>准确清晰</strong>，新人可以迅速理解并加入工作；</li>
+<li>已管理级，整个测试过程可以被<strong>测量和量化统计</strong>，并且有抓手控制全程；</li>
+<li>优化级，全团队向流程优化迈进，不断的<strong>改进测试工具和流程</strong>，测试效率不断提高；</li>
+</ol>
+<p>作为了解就好，不是主要内容。</p>
+<blockquote>
+<p>测试领域的二八原则：</p>
+<ol>
+<li>20%的功能占据了80%的总bug数</li>
+<li>20%的测试排期测出了最终的80%的bug</li>
+<li>20%的需求需要耗费80%的测试排期</li>
+<li>20%的用例做成自动化是最舒服的</li>
+</ol>
+<p>以后做事可能会用到这个规律。</p>
+</blockquote>
+<h2 id="梳理需求"><a href="#梳理需求" class="headerlink" title="梳理需求"></a>梳理需求</h2><p>测试开发如何向产品经理一样梳理需求？</p>
+<p>测试开发的主要作用就是<strong>生产测试工具软件</strong>，但因为需求不明所以会开发一些无用功能。所以了解下产品经理梳理需求的大致流程：</p>
+<ol>
+<li>什么情况下需要需求管理？需求对齐、新需求、业务变化、技术升级等；</li>
+<li>需求开发，这个阶段就是双V模型中需求分析的结果，<strong>形成《SRS》</strong>，然后拿去和用户确认；</li>
+<li>需求管理：人员分配、评审、制定标准、需求跟踪；</li>
+<li>需求跟踪的意义：跟进度，利用矩阵，跟踪需求关联到的开发和测试同学，关联到的用例编号，关联到的bug编号等等。</li>
+</ol>
+<h2 id="Bug分类"><a href="#Bug分类" class="headerlink" title="Bug分类"></a>Bug分类</h2><blockquote>
+<p>秒答：<strong>和需求文档不一样的就是bug</strong>。</p>
+</blockquote>
+<p>秒答是在第一层，接下来详细介绍：</p>
+<ol>
+<li>功能性缺陷</li>
+<li>系统缺陷</li>
+<li>加工缺陷</li>
+<li>数据缺陷</li>
+<li>代码缺陷</li>
+</ol>
+<h2 id="黑盒测试"><a href="#黑盒测试" class="headerlink" title="黑盒测试"></a>黑盒测试</h2><p>终于到<strong>正题</strong>了。前面那些做个了解就好，其实根据二八法则，<strong>测试理论中就20%的知识在实践中时主要用到的（狗头）</strong>。黑盒测试有哪些用例设计方法？等价类、判定表、边界值、正交、场景法……</p>
+<h3 id="等价类"><a href="#等价类" class="headerlink" title="等价类"></a>等价类</h3><p>主要划分就是有效等价类、无效等价类。</p>
+<p>有效等价类，对程序软件来说是合理的输入，有意义的，目的是检查程序是否满足了功能需求。</p>
+<p>无效等价类，对程序来说不合理的输入数据，目的是检查程序的错误处理等，无效等价类每条用例只能包含一个无效的测试点。</p>
+<p>测试类型：弱一般等价类；强一般；弱健壮性；强健壮性；</p>
+<p>等价类测试原则：细化范围，根据规则取有效类和无效等价类；</p>
+<p><strong>多做题多练练，记太多没用。</strong></p>
+<h3 id="判定表"><a href="#判定表" class="headerlink" title="判定表"></a>判定表</h3><p>主要是处理多个输入，且多个输入之间有逻辑关系的情况。<strong>测试的对象并非输入本身，而是多个输入之间的逻辑关系</strong>。</p>
+<p>条件桩、动作桩、条件项、动作项，最后组成表格，列出可能的表格。</p>
+<p>判定表的分类：实际上，大多数情况下都可以<strong>把条件项变成真假</strong> 。比如符合不符合，生效不生效等。</p>
+<p>列出真假可能，然后把不可能出现的组合划掉。剩下的就是有效的判定表用例了。</p>
+<p>现在知道是啥了，<strong>剩下就是多练</strong>。</p>
+<h3 id="边界值"><a href="#边界值" class="headerlink" title="边界值"></a>边界值</h3><p>对输入的<strong>位于边界的值和稍低稍高的值进行测试</strong>。分为离点，内点，上点和特殊点。</p>
+<p>边界值用例设计原则：</p>
+<ol>
+<li>输入条件规定范围，则取刚到达这个方位的边界的值和刚超越这个范围边界的值。</li>
+<li>规定个数，则用最大个数，最小个数，最大+1，最小-1。</li>
+<li>根据输出条件使用原则1、2</li>
+<li>如果输入域和输出域是有序的，则去第一个和最后一个元素作为测试数据；</li>
+<li>如果使用了内部数据，则应该用内部数据的边界上的值作为测试数据；</li>
+<li>分析规格说明，找出隐藏的边界条件。</li>
+</ol>
+<h3 id="正交"><a href="#正交" class="headerlink" title="正交"></a>正交</h3><p>主要作为处理多个输入的测试方法，但是<strong>和判定表不同</strong>的是，正交处理的<strong>多个输入之间不能有任何逻辑关联</strong>。</p>
+<p>正交只要保证任意条件的子状态和另一个输入条件的任意子状态 都同时出现过 即可。也就是说，它保证任意俩个子状态的排列组合。</p>
+<h3 id="场景法"><a href="#场景法" class="headerlink" title="场景法"></a>场景法</h3><p>也叫流程图法，是针对一些复杂场景和流程的测试方法，比如取款机。</p>
+<p>场景法分为基本流和备用流；</p>
+<p>基本流：最主要，最多频率， 最核心，最符合用户使用场景的流。比如：插入银行卡-输入密码-取款-输入金额-确定-取款成功-退卡。</p>
+<p>备用流：插入银行卡-输入密码-密码错误-退卡。插入银行卡-输入密码-密码错误-重新输入-成功-退卡。备用流一般会有很多。</p>
+<p><strong>每一个流程都是一个用例</strong>。</p>
+<h3 id="其他方法"><a href="#其他方法" class="headerlink" title="其他方法"></a>其他方法</h3><p>规范导出法：根据需求或者说明书，逐句进行验证，保证所有提到的功能都是正常的。</p>
+<p>错误猜测法：根据经验，直接测试出错概率最高的功能，可以极大的提高测试性价比。（天天猜）</p>
+<p>基于故障测试：目标是要证明 某个特定的故障bug不存在。</p>
+<p>基于风险测试：哪有风险就测哪。（例如弱网环境下测试）</p>
+<p>比较测试：横向是ios和Android同时测试；纵向则是多个版本一起测试；同行测试；市场占用率高的机型或环境下测试。</p>
+<h2 id="怎么谈白盒-黑盒-灰盒"><a href="#怎么谈白盒-黑盒-灰盒" class="headerlink" title="怎么谈白盒-黑盒-灰盒"></a>怎么谈白盒-黑盒-灰盒</h2><blockquote>
+<p>黑盒就是不看代码，白盒就是看代码，灰盒就是接口测试。</p>
+<p>幽默回答，可以这么记，但面试回答根本不够看的。</p>
+</blockquote>
+<h3 id="黑盒测试-1"><a href="#黑盒测试-1" class="headerlink" title="黑盒测试"></a>黑盒测试</h3><p>测试<strong>对象</strong>是完整的功能或系统；</p>
+<p>测试<strong>方法</strong>：十一种黑盒用例设计；</p>
+<p><strong>目的</strong>是为了尽早达到验收&#x2F;上线标准，验证功能和需求是否一致；</p>
+<p><strong>介入时间</strong>是在功能完成后；</p>
+<p>介入条件：无；</p>
+<p>评估标准：<strong>需求覆盖率</strong>；</p>
+<p><strong>最低标准</strong>：保证必要性，不保证充分性；</p>
+<p>优点：简单、模拟用户操作。</p>
+<p>缺点：测试介入晚，测试不充分，修复bug代价高。</p>
+<h3 id="灰盒测试"><a href="#灰盒测试" class="headerlink" title="灰盒测试"></a>灰盒测试</h3><p>测试对象：<strong>模块，接口，微服务，脚本</strong>等。</p>
+<p>测试方法：自下而上，自上而下，大突击，三明治；（芝士什么？）</p>
+<p>目的：<strong>逐步集成，尽早定位bug</strong>。尽早展开测试。</p>
+<p>介入时间：内部接口等对象完成开发；</p>
+<p>介入条件：出现<strong>难定位</strong>的bug；<strong>关联度复杂度高的接口</strong>；软件质量要求极高；跟生命安全相关功能。</p>
+<p>评估标准：<strong>接口覆盖率</strong></p>
+<p>优点：定位准确，介入早于黑盒测试；</p>
+<p>缺点：难度大，技术要求高，工作量也大；</p>
+<h3 id="白盒测试"><a href="#白盒测试" class="headerlink" title="白盒测试"></a>白盒测试</h3><p>测试对象：<strong>函数，代码，接口</strong>。</p>
+<p>测试方法：五种白盒用例设计法；</p>
+<p>目的：把bug修复成本和风险<strong>降到最低</strong>；</p>
+<p>介入时间：开发同事写代码过程中；</p>
+<p>接入条件：业务，技术，团队达到充分配合和较高技术水准和认知；</p>
+<p>评估标准：<strong>逻辑覆盖率</strong></p>
+<p>最低标准：看以往软件质量定标准</p>
+<p>优点：能测到代码内部，发现很多隐藏bug</p>
+<p>缺点：难度最高，工作量最大；</p>
+<p>使用场景：占工程的20%代码量即可。<strong>常用功能，核心功能，复杂度高功能，公共模块，复用度高功能</strong>；新研发同事，研发同学技术差，自测不充分的情况。</p>
+<p>开展步骤：依据LLD画出函数代码的<strong>流程图</strong>→变成圈图→整理出代码路径→写成测试用例。</p>
+<h2 id="中间件测试"><a href="#中间件测试" class="headerlink" title="中间件测试"></a>中间件测试</h2><p>中间件是什么？队列、缓存，都算是。</p>
+<p>中间件的特点是：</p>
+<ol>
+<li>可复用性：多次使用，并发使用，不同调用</li>
+<li>可观察性: 从输入和输出来观察这个构建的作用等</li>
+<li>可追踪性：属性状态和行为状态<strong>定位问题简单明了</strong></li>
+<li>可控制下：输入处理输出操作行为都可以人为操控，俗称<strong>抓手</strong></li>
+<li>可理解性：<strong>推广简单</strong>，让新人一学就会</li>
+</ol>
+<h3 id="测试难点"><a href="#测试难点" class="headerlink" title="测试难点"></a>测试难点</h3><p>中间件测试有哪些可能的难点？</p>
+<ol>
+<li>异构性：不同语言、不同平台，在<strong>兼容和操作</strong>上存在测试挑战</li>
+<li>是否可以看到代码，代码加密就难办</li>
+<li>构建系统的即插即用特性，要求无需编译配置即可升级，版本升级测试就显得更加重要</li>
+</ol>
+<h3 id="中间件的测试方法"><a href="#中间件的测试方法" class="headerlink" title="中间件的测试方法"></a>中间件的测试方法</h3><ol>
+<li>通过接口的输入输出来找出中间件的特点</li>
+<li>第一阶段是测试中间件本身，第二阶段要把融合中间件的软件进行测试</li>
+<li>根据各种错误码等规则进行针对性的测试</li>
+<li>给中间件增加一个内部测试环境或者后门程序，出结果，看日志更方便</li>
+<li>找出组件之间的各种交互，然后整理成形式化的测试需求，再写成用例</li>
+<li>一般开源组件基本没有bug，但是仍要进行多个不同组件集成的测试，就像一个工作台进行组装</li>
+<li>防止广告行为，必须找第三方验证</li>
+</ol>
+<p>可以看出这7点根本记不住，也没有什么专有名词（某某特性）概括，只能想多少说多少，其实用的时候也是这样的，想到的是怎么做，而不是念着专有名词，至少我是这样的。</p>
+<h2 id="自动化测试"><a href="#自动化测试" class="headerlink" title="自动化测试"></a>自动化测试</h2><blockquote>
+<p>学一个最简单的自动化脚本需要多久？答 ：五分钟。</p>
+<p>明白自动化测试的意义需要多久？据说要五年。。。</p>
+</blockquote>
+<p>问题：自动化测试脚本你会写，但是你不知道<strong>如何写</strong>，不知道<strong>为什么写</strong>，不知道脚本<strong>什么时候运行最好</strong>，不知道脚本的<strong>意义何在</strong>。</p>
+<p>面试官问谈谈对自动化测试的理解：（以下是新手回答）</p>
+<ol>
+<li>能降低手工测试的执行成本</li>
+<li>用xx语言xx框架可以做</li>
+<li>能回归用例，也能线上轮询监控</li>
+</ol>
+<h3 id="自动化测试技术有哪些"><a href="#自动化测试技术有哪些" class="headerlink" title="自动化测试技术有哪些"></a>自动化测试技术有哪些</h3><ol>
+<li>代码的静态动态分析：静态就是不执行源代码，动态就是监控运行时检查代码错误、性能问题；</li>
+<li>测试过程的录制和回放</li>
+<li>脚本技术：编写脚本来模拟用户操作、执行测试用例等。</li>
+<li>虚拟用户技术：模拟大量用户同时使用软件的情况，测试软件在高负载下的性能和稳定性；</li>
+<li>自动管理技术 ：自动化地管理软件测试的各个环节，如<strong>测试环境的搭建</strong>、测试<strong>数据的准备</strong>、测试结果的收集和分析等；</li>
+<li>等等……</li>
+</ol>
+<blockquote>
+<p>总结自己自动化项目用了哪些</p>
+</blockquote>
+<h3 id="自动化测试的限制"><a href="#自动化测试的限制" class="headerlink" title="自动化测试的限制"></a>自动化测试的限制</h3><p>也就是哪些情况不适合自动化测试：人工测试很容易、</p>
+<p>自动化测试的缺点：bug发现的又浅又少；对测试质量依赖性大；成本风险高；软件的部分反自动化设计；工具本身比较木讷。</p>
+<h3 id="如何写好脚本"><a href="#如何写好脚本" class="headerlink" title="如何写好脚本"></a>如何写好脚本</h3><p>脚本注释、功能、结构（易读，易理解，易维护）、文档</p>
+<h3 id="脚本结构"><a href="#脚本结构" class="headerlink" title="脚本结构"></a>脚本结构</h3><p>线性脚本，最拉的脚本。</p>
+<p>结构化脚本，选择，分支，迭代，循环等都有，好处是可重用和维护简单。</p>
+<p>共享脚本：属于<strong>组件类脚本</strong>，可以同时被多个用例调用，属于<strong>很底层的东西</strong>，可靠性一定要高，且要做好跟踪日志。</p>
+<p>数据驱动脚本：业务逻辑简单，数据多样化的情况适用。</p>
+<p>关键字驱动脚本：代码自动生成，用关键字自然语言进行控制，利于推广和维护。</p>
+<blockquote>
+<p>其实说了这么多不如自己去尝试写个自动化脚本</p>
+</blockquote>
+<h2 id="性能测试"><a href="#性能测试" class="headerlink" title="性能测试"></a>性能测试</h2><blockquote>
+<p>如果性能测试能说的很全面，那么offer会非常稳定。</p>
+</blockquote>
+<h3 id="指标"><a href="#指标" class="headerlink" title="指标"></a>指标</h3><ol>
+<li>响应时间，请求全程所耗的时间，是用户最直观的感受，引起响应慢的问题原因非常多；</li>
+<li>吞吐量并发数，单位时间内处理请求的数量，同时承担用户的数量等，经常被用于负载测试；了解一些指标参数的缩写，例如TPS、QPS</li>
+<li>资源利用率，单位时间内系统占用的资源，当然是越低越好；</li>
+</ol>
+<hr>
+<p>视角：用户（好用就行）、管理员（所有细节通通关心）、开发人员（找原因、找瓶颈、优化方向）</p>
+<p>目标：发现缺陷、性能调优、能力检验与规划。</p>
+<hr>
+<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><ol>
+<li>性能测试：主要检查是否符合规格说明的需求；</li>
+<li>并发测试：主要检查多个用户同时使用的时候是否会让指标降低；</li>
+<li>压力测试：在规定的大需求压力下能否正常工作；</li>
+<li>可靠性测试：在<strong>超规格极限</strong>的环境下能否正常使用各个功能；</li>
+<li>负载测试：不断增加业务压力，<strong>探索最大指标</strong>；</li>
+<li>配置测试：<strong>不同环境</strong>对性能的影响测试；</li>
+<li>失效恢复测试：<strong>容错能力</strong>，出现故障后能否恢复；</li>
+</ol>
+<blockquote>
+<p>压测、可靠性、负载，这三者之间的关注点不同。</p>
+<p>压测关注点在系统在高负载下的表现，如内存泄漏、处理延迟等。</p>
+<p>可靠性关注软件的<strong>长期稳定性</strong>，包括在连续运行和高负载情况下的表现。</p>
+<p>负载测试关注系统在正常负载下的<strong>性能指标</strong>，如响应时间、吞吐量等。</p>
+</blockquote>
+<blockquote>
+<p>这三者如何实现？在实践上有什么不同？</p>
+</blockquote>
+<h2 id="Web测试"><a href="#Web测试" class="headerlink" title="Web测试"></a>Web测试</h2><p>所谓的web测试，就是b&#x2F;s架构，就是浏览器页网站的测试。</p>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ol>
+<li>基于无连接协议，HTTP&#x2F;HTTPS是无连接协议；</li>
+<li>内容驱动，文本、图片、视频；</li>
+<li>开发周期短，Web特点</li>
+<li>演化频繁，Web特点</li>
+<li>安全要求高，经常处理敏感信息；</li>
+<li>美观要求高，要关注UI和用户体验；</li>
+</ol>
+<h3 id="策略"><a href="#策略" class="headerlink" title="策略"></a>策略</h3><p>Web应用分很多层，最好的测试策略就是<strong>分层测试</strong>。</p>
+<blockquote>
+<p>写过Java前后端项目的应该都知道，表示层属于前端部分，负责页面布局；业务层是接受响应后做出的处理，涉及大量API接口和实现，所以适合接口测试和白盒；数据层是数据库交互的持久层部分，使用框架有MyBatis，写一些增删改查逻辑的，可以拿大量数据测试鲁棒性。</p>
+<p>层间测试就是测试这些分层之间逻辑处理是否有缺陷，属于集成测试。</p>
+<p>以上是我的理解。</p>
+</blockquote>
+<ul>
+<li>表示层测试：排版结构，链接结构，客户端程序等测试</li>
+<li>业务层测试：单个程序白盒测试，一组功能集成测试</li>
+<li>数据层测试：破坏性数据测试，大数据测试</li>
+<li>层间集成测试：表示层与业务层的集成测试，表示层与数据层，业务层与数据层的测试</li>
+</ul>
+<h3 id="测试方法"><a href="#测试方法" class="headerlink" title="测试方法"></a>测试方法</h3><p>前面讲测试策略的时候讲到过<strong>前后端开发的特点</strong>，不难推出需要使用的测试方法。</p>
+<ul>
+<li>功能测试，链接测试、表达测试、cookie测试</li>
+<li>性能测试，并发、负载、压测、配置、调优</li>
+<li>易用性测试，界面UI排版、外观兼容</li>
+<li>内容测试，数据库内容是否正常、接口数据的显示等</li>
+<li>安全测试，服务器端、客户端、cookie、日志等安全测试</li>
+<li>接口测试，接收请求的能力和发出请求的能力测试</li>
+</ul>
+<h3 id="安全防护常用测试方法"><a href="#安全防护常用测试方法" class="headerlink" title="安全防护常用测试方法"></a>安全防护常用测试方法</h3><blockquote>
+<p>这是网安的活吧</p>
+</blockquote>
+<p>入侵测试，查看主机日志找到异常、定期检查文件权限、查找网络包找到入侵ip、</p>
+<p>漏洞扫描，OS漏洞、网络漏洞、数据库漏洞</p>
+<p>安全策略，物理上保护、<strong>访问安全（控制权限、网络检查、防火墙）</strong>、<strong>信息加密</strong>、安全管理</p>
+<h2 id="兼容性测试"><a href="#兼容性测试" class="headerlink" title="兼容性测试"></a>兼容性测试</h2><blockquote>
+<p>平时怎么做app的兼容性测试时，你是否只会回答，不同手机，不同品牌？不同系统版本？</p>
+<p>显然，回答可以看出是否是内行（虽然是外行），但至少要提前了解，<strong>回答要有章法</strong>。</p>
+</blockquote>
+<p>从三个方面考虑：<strong>硬件、软件、数据</strong>。</p>
+<h3 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h3><p>测试应该先考虑清楚硬件可能造成的影响再选择。</p>
+<p>影响：<strong>配置和性能</strong>的不同、某些特定硬件的功能和设计。</p>
+<p>测试内容：与整体硬件的兼容、与外设的兼容。例如，笔记本电脑的数位画板，在mac和windows都可以运行，但是也要考虑到mac的蓝牙键盘 鼠标，和windows的鼠标显示器等等外设是否也能兼容。</p>
+<h3 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h3><ol>
+<li>操作系统</li>
+<li>数据库系统</li>
+<li>浏览器</li>
+<li>中间件</li>
+<li>其他软件</li>
+<li>平台软件，包括开发平台和运行平台</li>
+</ol>
+<h3 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h3><ul>
+<li><strong>不同版本</strong>的数据兼容性：比如升级app后 旧数据能否在新接口和客户端完美展现</li>
+<li><strong>不同软件间</strong>数据兼容性：比如从postman导出的文件能否在接口测试平台导入</li>
+</ul>
+<h2 id="功非接"><a href="#功非接" class="headerlink" title="功非接"></a>功非接</h2><blockquote>
+<p>面试官或者你的领导突然给你一个功能，要你设计用例，你要怎么下手？</p>
+<p>如果直接从具体的测试用例开始，然后想到多少说多少，往往分数不高。</p>
+<p>所以不能忽视<strong>条理性</strong>，也就是前面提到的<strong>章法</strong>。目的就是为了能表现自己的思维更全面更系统。</p>
+</blockquote>
+<p>前面提到过，功非接就是<strong>功能、非功能、接口</strong>。</p>
+<h3 id="功能测试"><a href="#功能测试" class="headerlink" title="功能测试"></a>功能测试</h3><p>最熟悉的功能测试点。</p>
+<p>思考上要从，输入-处理-输出，三个角度讲，并且要分可见和不可见。</p>
+<h3 id="非功能测试"><a href="#非功能测试" class="headerlink" title="非功能测试"></a>非功能测试</h3><p>可以参考【iso9126】的这个国际质量体系来测试。</p>
+<p>其实就是抓住前面提到过的<strong>非功能六大特性</strong>去讲。</p>
+<p><strong>非功能 &#x3D; 功能性+可靠性+可用性+效率性+可维护性+可移植性</strong></p>
+<h3 id="接口测试"><a href="#接口测试" class="headerlink" title="接口测试"></a>接口测试</h3><p>不是http协议等接口或者Post&#x2F;Get，而是更宏观的接口：<strong>用户接口，软件接口，硬件接口</strong>。</p>
+<ul>
+<li>用户接口：交互、表层设计等；</li>
+<li>软件接口：软件和其他软件的配合使用情况，比如word文档和pdf互相导入导出的；</li>
+<li>硬件接口：软件和其他硬件物理设备的交互质量，比如word文档和打印机，美颜app和摄像头，鼠标驱动和鼠标等；</li>
+</ul>
+<blockquote>
+<p>《理论基础》到这就结束了，有些内容<strong>有待实践过程中细化</strong>，其主要目的是为了打下基础，所以参考别处博客的时候都是有什么吃什么。</p>
+<p>回看这三篇笔记，主要内容还是<strong>功非接</strong>、白盒、黑盒、自动化、性能。</p>
+<p>测试测开的笔面题汇总到另一篇上，形式和《Python100》一样。</p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>测试理论基础（三）</div>
+      <div>https://ryan-wwj.github.io/测试理论基础（三）/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>郭刘吉</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年8月25日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E6%B5%8B%E8%AF%95%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80%EF%BC%88%E4%BA%8C%EF%BC%89/" title="测试理论基础（二）">
+                        <span class="hidden-mobile">测试理论基础（二）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
